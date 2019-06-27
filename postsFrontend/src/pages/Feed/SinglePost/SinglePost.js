@@ -14,7 +14,7 @@ class SinglePost extends Component {
 
   componentDidMount() {
     const postId = this.props.match.params.postId;
-    let url = 'http://localhost:8080/feed/post/' + postId;
+    let url = `${process.env.REACT_APP_BACKEND_URL}/feed/post/${postId}`;
     if (this.state.editPost) {
       url = 'URL';
     }
@@ -34,7 +34,7 @@ class SinglePost extends Component {
         this.setState({
           title: resData.post.title,
           author: resData.post.creator,
-          image: 'http://localhost:8080/' + resData.post.imageUrl,
+          image: `${process.env.REACT_APP_BACKEND_URL}/${resData.post.imageUrl}`,
           date: new Date(resData.post.createdAt).toLocaleDateString('en-US'),
           content: resData.post.content,
         });
