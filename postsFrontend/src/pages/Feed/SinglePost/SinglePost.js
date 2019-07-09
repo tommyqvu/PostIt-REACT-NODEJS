@@ -31,9 +31,10 @@ class SinglePost extends Component {
         return res.json();
       })
       .then(resData => {
+        console.log(resData.post.creator)
         this.setState({
           title: resData.post.title,
-          author: resData.post.creator,
+          author: resData.post.creator.name,
           image: `${process.env.REACT_APP_BACKEND_URL}/${resData.post.imageUrl}`,
           date: new Date(resData.post.createdAt).toLocaleDateString('en-US'),
           content: resData.post.content,
